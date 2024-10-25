@@ -16,12 +16,6 @@ python -m pip install -r requirements.txt
 python manage.py runserver
 ```
 
-4. Please, check the server status using GET request:
-
-```
-localhost:8000/api/v1
-```
-
 ##### Run tests (optional)
 
 You can run API tests with the next command:
@@ -30,3 +24,30 @@ You can run API tests with the next command:
 python manage.py test
 ```
 
+### Running via docker
+
+1. Please, build the docker image:
+
+```sh
+docker build -t meduzzen_be .
+```
+
+2. Create and start container
+
+```sh
+docker run -p 8000:8000 meduzzen_be
+```
+
+##### Run tests (optional)
+
+You can run API tests with the next command:
+
+```sh
+docker run -it meduzzen_be python manage.py test
+```
+
+### Check the server status using GET request:
+
+```
+localhost:8000/api/v1
+```
