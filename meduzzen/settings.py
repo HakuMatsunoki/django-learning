@@ -98,8 +98,8 @@ DATABASES = {
 
 # Redis cache settings
 
-REDIS_HOST = "cache"
-REDIS_PORT = 6379
+REDIS_HOST = env("REDIS_HOST")
+REDIS_PORT = env.int("REDIS_PORT")
 
 
 # Password validation
