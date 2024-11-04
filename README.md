@@ -46,6 +46,31 @@ You can run API tests with the next command:
 docker run -it meduzzen_be python manage.py test
 ```
 
+### Running via docker compose
+
+1. Please, launch the project:
+
+```sh
+docker compose up -d
+```
+
+##### Apply migrations
+
+You can apply migrations with the next two lines:
+
+```sh
+docker compose run api python manage.py makemigrations
+docker compose run api python manage.py migrate
+```
+
+##### Run tests (optional)
+
+You can run API tests with the next command:
+
+```sh
+docker compose run api python manage.py test
+```
+
 ### Check the server status using GET request:
 
 ```
