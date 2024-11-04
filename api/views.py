@@ -1,4 +1,5 @@
 from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework.views import APIView
 from django.core.cache import cache
 import logging
@@ -8,7 +9,7 @@ import logging
 class CheckHealthView(APIView):
     logger = logging.getLogger("django")
 
-    def get(self, request):
+    def get(self, request: Request) -> Response:
         cached_result = cache.get("json_key")
 
         if cached_result:
