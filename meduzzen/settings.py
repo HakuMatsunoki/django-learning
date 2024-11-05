@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "djoser",
     "api.apps.ApiConfig",
     "accounts.apps.AccountsConfig",
 ]
@@ -53,6 +54,22 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("JWT",),
+}
+
+DJOSER = {
+    "PASSWORD_RESET_CONFIRM_URL": "reset/password/{uid}/{token}/",
+    "USERNAME_RESET_CONFIRM_URL": "reset/username/{uid}/{token}/",
+    "SEND_ACTIVATION_EMAIL": True,
+    "SEND_CONFIRMATION_EMAIL": True,
 }
 
 MIDDLEWARE = [
