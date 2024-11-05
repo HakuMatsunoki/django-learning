@@ -33,7 +33,7 @@ DEBUG = env.bool("DJANGO_DEBUG", default=False)
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "accounts.UserModel"
-# APPEND_SLASH = False
+
 
 # Application definition
 
