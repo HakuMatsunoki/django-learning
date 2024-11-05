@@ -32,6 +32,9 @@ DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "accounts.UserModel"
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "api.apps.ApiConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 REST_FRAMEWORK = {
