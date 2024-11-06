@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from environs import Env
+from datetime import timedelta
 
 env = Env()
 env.read_env()
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "djoser",
     "api.apps.ApiConfig",
     "accounts.apps.AccountsConfig",
 ]
@@ -53,6 +55,30 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=env.int("ACCESS_TOKEN_LIFETIME_HOURS")),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=env.int("REFRESH_TOKEN_LIFETIME_DAYS")),
+}
+
+DJOSER = {
+    "PASSWORD_RESET_CONFIRM_URL": "reset/password/{uid}/{token}/",
+    "USERNAME_RESET_CONFIRM_URL": "reset/username/{uid}/{token}/",
+    "ACTIVATION_URL": "activate/{uid}/{token}/",
+    "SEND_ACTIVATION_EMAIL": True,
+    "SEND_CONFIRMATION_EMAIL": True,
+    "SERIALIZERS": {
+        "user_create": "accounts.serializers.UserSerializer",
+        "user": "accounts.serializers.UserListSerializer",
+        "current_user": "accounts.serializers.UserSerializer",
+    },
 }
 
 MIDDLEWARE = [
