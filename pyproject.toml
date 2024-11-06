@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length = 120
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I"
+]
+per-file-ignores = { "accounts/migrations/*.py" = ["E501"] }
