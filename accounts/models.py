@@ -8,5 +8,7 @@ from api.models import TimeStampedModel
 class UserModel(TimeStampedModel, AbstractUser):
     image_path = models.ImageField(upload_to="users/%Y/%m/%d/", blank=True)
 
+    REQUIRED_FIELDS = ["email"]
+
     def __str__(self) -> str:
         return self.username
