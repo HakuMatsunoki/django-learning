@@ -6,8 +6,8 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /meduzzen_be
 
-COPY ./requirements.txt .
-RUN python -m pip install -r requirements.txt
+COPY ./requirements.txt /meduzzen_be/requirements.txt
+RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
