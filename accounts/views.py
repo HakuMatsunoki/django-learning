@@ -1,10 +1,11 @@
+from typing import Type
+
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.serializers import ModelSerializer
-from typing import Type
 
-from .serializers import UserSerializer, UserListSerializer
+from .serializers import UserListSerializer, UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
