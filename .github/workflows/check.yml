@@ -1,4 +1,4 @@
-name: qa
+name: code-check
 
 on:
   push:
