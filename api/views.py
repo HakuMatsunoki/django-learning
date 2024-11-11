@@ -1,6 +1,7 @@
 import logging
 
 from django.core.cache import cache
+from django.utils.translation import gettext as _
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,8 +19,8 @@ class CheckHealthView(APIView):
 
             return Response(cached_result)
 
-        result = {"status_code": 200, "detail": "ok", "result": "working"}
-        cache.set("json_key", result, 30)
+        result = {"status_code": 200, "detail": "ok", "result": _("working")}
+        cache.set("json_key", result, 5)
         self.logger.info("fresh response")
 
         return Response(result)
