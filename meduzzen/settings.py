@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "djoser",
     "api.apps.ApiConfig",
     "accounts.apps.AccountsConfig",
+    "company.apps.CompanyConfig",
 ]
 
 REST_FRAMEWORK = {
@@ -70,6 +71,7 @@ SIMPLE_JWT = {
 DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "reset/password/{uid}/{token}/",
     "USERNAME_RESET_CONFIRM_URL": "reset/username/{uid}/{token}/",
+    "TOKEN_EXPIRE_TIME": timedelta(hours=2),
     "ACTIVATION_URL": "activate/{uid}/{token}/",
     "SEND_ACTIVATION_EMAIL": True,
     "SEND_CONFIRMATION_EMAIL": True,
