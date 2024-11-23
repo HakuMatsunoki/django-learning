@@ -35,7 +35,7 @@ class InviteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invite
-        fields = ("id", "company", "status")
+        fields = ("id", "company", "status", "created_at")
 
 
 class RequestSerializer(serializers.ModelSerializer):
@@ -44,4 +44,4 @@ class RequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Request
-        fields = ("id", "company", "status")
+        fields = ("id", "company", "status", "created_at")
