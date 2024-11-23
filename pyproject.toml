@@ -1,4 +1,4 @@
 [tool.ruff]
 line-length = 120
 select = [ "E", "F", "UP", "B", "SIM", "I" ]
-per-file-ignores = { "accounts/migrations/*.py" = ["E501"] }
+exclude = ["**/migrations/*.py"]
