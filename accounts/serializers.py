@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from company.models import Invite, Request
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +27,21 @@ class UserListSerializer(serializers.ModelSerializer):
             "image_path",
             "created_at",
         )
+
+
+class InviteSerializer(serializers.ModelSerializer):
+    company = serializers.StringRelatedField(read_only=True)
+    status = serializers.CharField(source="get_status_display", read_only=True)
+
+    class Meta:
+        model = Invite
+        fields = ("id", "company", "status")
+
+
+class RequestSerializer(serializers.ModelSerializer):
+    company = serializers.StringRelatedField(read_only=True)
+    status = serializers.CharField(source="get_status_display", read_only=True)
+
+    class Meta:
+        model = Request
+        fields = ("id", "company", "status")
