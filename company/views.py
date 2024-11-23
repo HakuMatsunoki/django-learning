@@ -67,12 +67,13 @@ class CompanyViewSet(viewsets.ModelViewSet):
         if action == InviteActionEnum.SEND:
             guest = get_object_or_404(UserModel, id=request.data["guest"])
             company = get_object_or_404(Company, id=pk)
-            token = secrets.token_hex(32)
-            token_bytes = bytes.fromhex(token)
-            token_hash = hashlib.sha256(token_bytes).hexdigest()
 
             if company.owner != self.request.user:
                 return Response({"status": "failed", "msg": "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
+
+            token = secrets.token_hex(32)
+            token_bytes = bytes.fromhex(token)
+            token_hash = hashlib.sha256(token_bytes).hexdigest()
 
             invite = Invite.objects.create(
                 company=company,
