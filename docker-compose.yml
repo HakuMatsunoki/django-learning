@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:17.0
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_DB=${POSTGRES_DB}'
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+    networks:
+      - meduzzen
+  cache:
+    image: redis:7.4.1
+    restart: always
+    volumes:
+      - redis_data:/data
+    networks:
+      - meduzzen
+  api:
+    build: .
+    restart: always
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/meduzzen_be
+    depends_on:
+      - db
+      - cache
+    networks:
+      - meduzzen
+networks:
+  meduzzen:
+    driver: bridge
+volumes:
+  postgres_data:
+  redis_data:

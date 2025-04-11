@@ -1,0 +1,5 @@
+.venv
+.git
+.gitignore
+db.sqlite3
+*.mo
