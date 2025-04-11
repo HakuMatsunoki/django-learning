@@ -1,5 +1,3 @@
-## Meduzzen API
-
 ### Setup and running
 
 1. Install requirements:
